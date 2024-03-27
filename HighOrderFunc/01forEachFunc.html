@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function formalGreeting() {
+      console.log('How are you?')
+    };
+
+    function casualGreeting() {
+      console.log("What's up?");
+    };
+
+    function greet(type, greetFormal, greetCasual) {
+      if (type === 'formal') {
+        greetFormal();
+      } else if (type === 'casual') {
+        greetCasual();
+      }
+    };
+
+    greet('casual', formalGreeting, casualGreeting);
+
+    // forEach함수
+    // - array의 크기인 N번 반복하여 콜백함수를 호출한다.
+    // thisArgs는 콜백함수 내에서 인수로 사용된다. this.xx와 같이 사용할 수 있다. 필요 없는 경우 생략 가능
+    // 반환 값 없음.
+
+    // map() 내에서 사용할 콜백함수를 별도로 선언할 수 있다. 콜백함수의 매개변수는 3개지만 필요없으면 생략 가능.
+
+    function forEachTest1() {
+      console.error(first)
+    }
+  </script>
+</body>
+
+</html>

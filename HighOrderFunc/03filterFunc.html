@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <input type="button" onclick="filterTest1()" value="filter1" />
+    <input type="button" onclick="filterTest2()" value="filter2" />
+    <input type="button" onclick="filterTest3()" value="filter3" />
+  </div>
+
+  <script>
+    // filter()함수
+    // filter 라는 명칭과 같이 콜백함수의 조건에 해당하는 요소만 반환하며 새로운 배열을 만들때 사용
+    // map()과 형식은 동일하지만, 반환값에 대한 차이만 있다.
+    const filterTest1 = () => {
+      var oldArray = [1, 2, 3, 4, 5];
+      var newArray = oldArray.filter((curr) => {
+        console.log('현재원소', curr);
+        return curr <= 3
+      });
+      console.log(newArray);
+    };
+
+    const filterTest2 = () => {
+      var oldJSONArray = [
+        {
+          name: '이건',
+          salary: 5000
+        },
+        {
+          name: '홍길동',
+          salary: 1000
+        },
+        {
+          name: '임신구',
+          salary: 2000
+        },
+        {
+          name: '이승룡',
+          salary: 5000
+        },
+        {
+          name: '이건',
+          salary: 5000
+        },
+        {
+          name: '홍길동',
+          salary: 1000
+        },
+        {
+          name: '임신구',
+          salary: 2000
+        },
+        {
+          name: '이승룡',
+          salary: 5000
+        },
+      ];
+
+      var newJsonArray = oldJSONArray.filter((curr) => {
+        return curr.salary <= 3000
+      }, undefined);
+      console.log(newJsonArray);
+    };
+
+    const filterTest3 = () => {
+      var oldArray = [1, 2, 3, 4, 5, 50, 100];
+      // 콜백함수에서 사용할 객체 생성
+      var thisArgs = {
+        min: 1,
+        max: 10,
+      };
+      // 1-10사이의 값만 추출하는 콜백함수 정의
+      function getMinMax(val) {
+        return val >= this.min && val <= this.max;
+      };
+      // 2개의 인자를 통해 filter함수를 호출하여 새로운 배열을 반환받는다.
+      var newArray = oldArray.filter(getMinMax, thisArgs);
+      console.log('thisArgs사용결과', newArray);
+    };
+  </script>
+</body>
+
+</html>
