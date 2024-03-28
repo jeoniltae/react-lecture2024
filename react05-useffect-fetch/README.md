@@ -1,3 +1,10 @@
+# API 정보
+
+API Url : https://api.randomuser.me
+파라미터
+results : 결과 데이터의 갯수를 지정. 정수를 입력.
+nat : 국가표시. GB, NO, FR, US 등. 생략시 모든 국가 반환
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

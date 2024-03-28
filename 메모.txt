@@ -1,5 +1,5 @@
 <리액트 교안>
-https://docs.google.com/document/d/1Sc71V9lMzRBJw-UQw-2rOnifnzaOnfju8sTvuKl3mzs/edit?pli=1#heading=h.2p6h5t5wj6l6
+https://docs.google.com/document/d/1Sc71V9lMzRBJw-UQw-2rOnifnzaOnfju8sTvuKl3mzs/edit?pli=1
 
 <실습진행상황>
-https://docs.google.com/spreadsheets/d/1cZKocAkAivSn3p6_9lQjOjtlJHKDZcHLIV7fvtpsITo/edit#gid=952002974
+https://docs.google.com/spreadsheets/d/1cZKocAkAivSn3p6_9lQjOjtlJHKDZcHLIV7fvtpsITo/edit
