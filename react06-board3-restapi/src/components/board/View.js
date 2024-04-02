@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import React, { Link, useParams } from 'react-router-dom';
+import React, { Link, useNavigate, useParams } from 'react-router-dom';
 
 const View = (props) => {
+  const navigate = useNavigate();
   let params = useParams();
   console.log('idx', params.idx);
 
@@ -28,7 +29,39 @@ const View = (props) => {
     <nav>
       <Link to="/list">목록</Link>&nbsp;
       <Link to={`/edit/${params.idx}`}>수정</Link>&nbsp;
-      <Link to="/delete">삭제</Link>
+      <Link to="/delete" onClick={() => {
+        if (window.confirm('삭제하시겠습니까?')) {
+          console.log('삭제idx', params.idx);
+          // 삭제는 POST방식으로 요청.
+          fetch('http://nakja.co.kr/APIs/php7/boardDeleteJSON.php', {
+            method: 'POST',
+            headers: {
+              // <form>태그의 디폴트 인코딩 방식과 케릭셋 지정
+              'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            },
+            body: new URLSearchParams({
+              tname: 'nboard_news',
+              idx: params.idx,
+            }),
+          })
+            .then(res => {
+              return res.json();
+            })
+            .then(json => {
+              console.log(json);
+              if (json.result === 'success') {
+                alert('삭제되었습니다.');
+                navigate('/list');
+              } else {
+                alert('삭제 실패');
+              }
+            });
+        } else {
+          setTimeout(() => {
+            navigate(`/view/${params.idx}`);
+          }, 1);
+        }
+      }} >삭제</Link>
     </nav>
     <article>
       <table id="boardTable">
