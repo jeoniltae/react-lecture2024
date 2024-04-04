@@ -34,12 +34,48 @@ function App() {
     setNextVal(nextVal + 1);
   };
 
+  // 삭제 버튼 클릭시 플레이어 삭제
+  const delPlayerProcess = (playerIdx) => {
+    console.log('삭제Idx', playerIdx);
+
+    let newPlayerData = playerData.reduce((prev, curr) => {
+      if (curr.idx !== playerIdx) {
+        prev.push(curr);
+      }
+      return prev;
+    }, []);
+
+    setPlayerData(newPlayerData);
+  };
+
+
+  // 플레이어의 점수 변경
+  const scoreChangeProcess = (flag, playerIdx) => {
+    console.log('idx', playerIdx, 'flag', flag);
+    // 데이터의 복사본 생성
+    let copyPlayers = [...playerData];
+    copyPlayers.forEach(row => {
+      // 매개변수로 받은 일련번호와 플레이어를 비교
+      if (row.idx === playerIdx) {
+        console.log(row.name);
+        if (flag === '+') {
+          row.score += 5
+        } else {
+          row.score -= 5
+        }
+      }
+    });
+    // 변경된 데이터를 통해 state변경 및 재 렌더링
+    setPlayerData(copyPlayers);
+  };
+
   return (
     <div className="scoreboard">
+      {/* playerData를 props로 전달 */}
       <Header title="My Scoreboard" playersData={playerData} />
       {
         playerData.map((playerRow) => (
-          <Player key={playerRow.idx} playerData={playerRow} />
+          <Player key={playerRow.idx} playerData={playerRow} onChangeScore={scoreChangeProcess} onDelPlayer={delPlayerProcess} />
         ))
       }
       <AddPlayerForm onAddPlayer={addPlayerProcess}></AddPlayerForm>

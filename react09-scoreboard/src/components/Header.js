@@ -5,9 +5,10 @@ import Stopwatch from '../components/Stopwatch';
 export default function Header(props) {
   return (<>
     <header className="header">
-			<Stats />
-			<h1 className="h1">{props.title}</h1>
-			<Stopwatch></Stopwatch>
-		</header>
+      {/* 부모에서 받은 playerData를 다시 자식으로 전달 */}
+      <Stats playersData={props.playersData} />
+      <h1 className="h1">{props.title}</h1>
+      <Stopwatch></Stopwatch>
+    </header>
   </>);
 }
